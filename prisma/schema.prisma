@@ -1,0 +1,196 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  name         String
+  role         String
+  passwordHash String
+  active       Boolean  @default(true)
+  createdAt    DateTime @default(now())
+  identity     StudentIdentity?
+  profile      TaProfile?
+  sessions     Session[]
+}
+
+// Academic identifier is deliberately separate from the internal learning record key.
+model StudentIdentity {
+  userId              String @id
+  studentNumberDigest String @unique
+  user                User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Session {
+  id         String   @id @default(cuid())
+  tokenHash  String   @unique
+  csrfToken  String
+  userId     String
+  expiresAt  DateTime
+  createdAt  DateTime @default(now())
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model TaProfile {
+  userId    String @id
+  subjects  String @default("[]")
+  expertise String @default("[]")
+  units     String @default("[]")
+  present   Boolean @default(false)
+  user      User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Course {
+  id     String @id @default(cuid())
+  name   String
+  field  String
+  active Boolean @default(true)
+  units  Unit[]
+}
+
+model Unit {
+  id       String @id @default(cuid())
+  courseId String
+  name     String
+  active   Boolean @default(true)
+  course   Course @relation(fields: [courseId], references: [id], onDelete: Cascade)
+}
+
+model Slot {
+  id        String   @id
+  taId      String
+  start     DateTime
+  end       DateTime
+  bookingId String?  @unique
+  @@index([taId, start])
+}
+
+model Booking {
+  id               String   @id @default(cuid())
+  studentId        String
+  taId             String?
+  courseId         String
+  unitId           String?
+  question         String   @default("")
+  start            DateTime
+  end              DateTime
+  status           String   @default("BOOKED")
+  matchLevel       Int
+  confirmation     String
+  mode             String
+  route            String   @default("TA")
+  source           String   @default("RESERVATION")
+  dataKind         String   @default("DEMO")
+  slotId           String?
+  checkedInAt      DateTime?
+  startedAt        DateTime?
+  completedAt      DateTime?
+  preparation      Boolean?
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+  record           LearningRecord?
+  survey           Survey?
+  @@index([studentId, start])
+  @@index([taId, start])
+}
+
+model LearningRecord {
+  id               String   @id @default(cuid())
+  bookingId        String   @unique
+  studentId        String
+  taId             String?
+  taught           String
+  understood       String
+  unresolved       String
+  handoff          String
+  effectiveMinutes Int
+  dataKind         String   @default("DEMO")
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+  booking          Booking @relation(fields: [bookingId], references: [id], onDelete: Cascade)
+  @@index([studentId])
+}
+
+model Survey {
+  id           String   @id @default(cuid())
+  bookingId    String   @unique
+  studentId    String
+  satisfaction Int
+  resolved     Boolean
+  matched      Boolean
+  returnIntent Boolean
+  comment      String
+  dataKind     String   @default("DEMO")
+  createdAt    DateTime @default(now())
+  booking      Booking @relation(fields: [bookingId], references: [id], onDelete: Cascade)
+}
+
+model Notification {
+  id        String   @id @default(cuid())
+  userId    String
+  bookingId String?
+  message   String
+  read      Boolean  @default(false)
+  createdAt DateTime @default(now())
+  @@index([userId, read])
+}
+
+model Interview {
+  id              String   @id @default(cuid())
+  date            DateTime
+  category        String
+  question        String
+  answer          String
+  operation       String
+  reason          String
+  issue           String
+  proposal        String
+  quotePermission String
+  verification    String
+  dataKind        String   @default("DEMO")
+  createdBy       String
+  createdAt       DateTime @default(now())
+}
+
+model HistoryGrant {
+  id        String   @id @default(cuid())
+  studentId String
+  userId    String
+  grantedBy String
+  createdAt DateTime @default(now())
+  @@unique([studentId, userId])
+}
+
+model Setting {
+  key   String @id
+  value String
+}
+
+model BookingAttempt {
+  id         String   @id @default(cuid())
+  studentId  String
+  success    Boolean
+  dataKind   String   @default("DEMO")
+  createdAt  DateTime @default(now())
+}
+
+model AuditEvent {
+  id        String   @id @default(cuid())
+  actorId   String?
+  action    String
+  entityId  String?
+  detail    String
+  createdAt DateTime @default(now())
+}
+
+model LoginThrottle {
+  key         String   @id
+  attempts    Int      @default(0)
+  windowStart DateTime @default(now())
+}

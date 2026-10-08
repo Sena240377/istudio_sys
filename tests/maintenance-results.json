@@ -1,0 +1,84 @@
+{
+  "startedAt": "2026-10-08T05:10:23.665Z",
+  "endedAt": "2026-10-08T05:10:25.341Z",
+  "database": "prisma/test.db (隔離)",
+  "port": 3001,
+  "beforeCounts": {
+    "AuditEvent": 37,
+    "Booking": 32,
+    "BookingAttempt": 37,
+    "Course": 8,
+    "HistoryGrant": 0,
+    "Interview": 1,
+    "LearningRecord": 18,
+    "LoginThrottle": 0,
+    "Notification": 20,
+    "Session": 10,
+    "Setting": 6,
+    "Slot": 440,
+    "StudentIdentity": 5,
+    "Survey": 11,
+    "TaProfile": 5,
+    "Unit": 24,
+    "User": 12
+  },
+  "afterCounts": {
+    "AuditEvent": 37,
+    "Booking": 32,
+    "BookingAttempt": 37,
+    "Course": 8,
+    "HistoryGrant": 0,
+    "Interview": 1,
+    "LearningRecord": 18,
+    "LoginThrottle": 0,
+    "Notification": 20,
+    "Session": 10,
+    "Setting": 6,
+    "Slot": 440,
+    "StudentIdentity": 5,
+    "Survey": 11,
+    "TaProfile": 5,
+    "Unit": 24,
+    "User": 12
+  },
+  "passed": 6,
+  "failed": 0,
+  "results": [
+    {
+      "id": "M1",
+      "name": "SQLite online backup と保存後 integrity_check が成功する",
+      "status": "PASS",
+      "durationMs": 167
+    },
+    {
+      "id": "M2",
+      "name": "復元確認フラグがなければ DB を変更しない",
+      "status": "PASS",
+      "durationMs": 112
+    },
+    {
+      "id": "M3",
+      "name": "指定ポート稼働中は復元を拒否する",
+      "status": "PASS",
+      "durationMs": 145
+    },
+    {
+      "id": "M4",
+      "name": "iStudio スキーマのない SQLite ファイルを復元しない",
+      "status": "PASS",
+      "durationMs": 123
+    },
+    {
+      "id": "M5",
+      "name": "停止済み test.db を復元し全テーブル件数と内容が戻る",
+      "status": "PASS",
+      "durationMs": 249
+    },
+    {
+      "id": "M6",
+      "name": "デモ seed の再実行は既存予約・記録・設定を保持する",
+      "status": "PASS",
+      "durationMs": 872
+    }
+  ]
+}

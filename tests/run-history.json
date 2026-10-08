@@ -1,0 +1,957 @@
+[
+  {
+    "startedAt": "2026-10-08T05:06:55.741Z",
+    "endedAt": "2026-10-08T05:06:58.212Z",
+    "timezone": "Asia/Tokyo",
+    "baseURL": "http://127.0.0.1:3001",
+    "isolation": "運用用 dev.db と別の SQLite test.db。架空デモデータを実際に変更。",
+    "passed": 0,
+    "failed": 1,
+    "results": [
+      {
+        "id": "SETUP",
+        "name": "隔離デモ環境とログインの準備",
+        "status": "FAIL",
+        "durationMs": 0,
+        "reason": "JSON ではない応答 (500)\n\n500 !== 200\n"
+      }
+    ]
+  },
+  {
+    "startedAt": "2026-10-08T05:08:02.398Z",
+    "endedAt": "2026-10-08T05:08:02.500Z",
+    "timezone": "Asia/Tokyo",
+    "baseURL": "http://127.0.0.1:3001",
+    "isolation": "運用用 dev.db と別の SQLite test.db。架空デモデータを実際に変更。",
+    "passed": 0,
+    "failed": 1,
+    "results": [
+      {
+        "id": "SETUP",
+        "name": "隔離デモ環境とログインの準備",
+        "status": "FAIL",
+        "durationMs": 0,
+        "reason": "JSON ではない応答 (500)\n\n500 !== 200\n"
+      }
+    ]
+  },
+  {
+    "startedAt": "2026-10-08T05:08:41.673Z",
+    "endedAt": "2026-10-08T05:08:57.805Z",
+    "timezone": "Asia/Tokyo",
+    "baseURL": "http://127.0.0.1:3001",
+    "isolation": "運用用 dev.db と別の SQLite test.db。架空デモデータを実際に変更。",
+    "passed": 23,
+    "failed": 0,
+    "results": [
+      {
+        "id": 1,
+        "name": "学生が科目と TA の対応科目・単元・空き枠を取得できる",
+        "status": "PASS",
+        "durationMs": 74
+      },
+      {
+        "id": 2,
+        "name": "完全一致 TA に予約し、サーバーがレベル 1 と確認済みを保存する",
+        "status": "PASS",
+        "durationMs": 1079
+      },
+      {
+        "id": 3,
+        "name": "関連分野 TA はレベル 2・対応確認待ちとなり TA が承認できる",
+        "status": "PASS",
+        "durationMs": 405
+      },
+      {
+        "id": 4,
+        "name": "完全一致がなくても一般・教員相談を受け付け、未確認 TA の自動割当を防ぐ",
+        "status": "PASS",
+        "durationMs": 519
+      },
+      {
+        "id": 5,
+        "name": "科目と日時だけの簡単予約が永続化される",
+        "status": "PASS",
+        "durationMs": 57
+      },
+      {
+        "id": 6,
+        "name": "単元・具体的な質問を含む詳細予約を保存する",
+        "status": "PASS",
+        "durationMs": 264
+      },
+      {
+        "id": 7,
+        "name": "同一 TA・同一枠への同時予約は 1 件だけ成功する",
+        "status": "PASS",
+        "durationMs": 519
+      },
+      {
+        "id": 8,
+        "name": "当日予約通知が TA に即時保存され、確認状態を更新できる",
+        "status": "PASS",
+        "durationMs": 179
+      },
+      {
+        "id": 9,
+        "name": "学生が予約当日にチェックインし来室日時を保存する",
+        "status": "PASS",
+        "durationMs": 126
+      },
+      {
+        "id": 10,
+        "name": "担当 TA が準備・指導開始・カルテ・指導完了を保存する",
+        "status": "PASS",
+        "durationMs": 461
+      },
+      {
+        "id": 11,
+        "name": "他の学生・担当外 TA のカルテ直接閲覧と更新を拒否する",
+        "status": "PASS",
+        "durationMs": 2252
+      },
+      {
+        "id": 12,
+        "name": "指導完了後に学生が任意アンケートへ回答し保存する",
+        "status": "PASS",
+        "durationMs": 125
+      },
+      {
+        "id": 13,
+        "name": "管理者が予約・来室・指導品質・試行数を集計 CSV で確認する",
+        "status": "PASS",
+        "durationMs": 898
+      },
+      {
+        "id": 14,
+        "name": "ヒアリング原文・引用許可・未検証状態を保持する",
+        "status": "PASS",
+        "durationMs": 254
+      },
+      {
+        "id": 15,
+        "name": "デモと実測を区別し導入前未取得を保持する",
+        "status": "PASS",
+        "durationMs": 154
+      },
+      {
+        "id": 16,
+        "name": "未認証・偽セッション・CSRF 欠落・異なる Origin を拒否する",
+        "status": "PASS",
+        "durationMs": 229
+      },
+      {
+        "id": 17,
+        "name": "学生による管理設定・他人予約操作・CSV 出力を拒否する",
+        "status": "PASS",
+        "durationMs": 147
+      },
+      {
+        "id": 18,
+        "name": "未来のチェックイン・範囲外満足度・異なる科目の単元を拒否する",
+        "status": "PASS",
+        "durationMs": 289
+      },
+      {
+        "id": 19,
+        "name": "予約の質問変更とキャンセルを TA に通知し空き枠を戻す",
+        "status": "PASS",
+        "durationMs": 519
+      },
+      {
+        "id": 20,
+        "name": "教員の履歴権限を管理者が付与・撤回できる",
+        "status": "PASS",
+        "durationMs": 422
+      },
+      {
+        "id": 21,
+        "name": "飛び込みを担当未確認の一般相談として受付記録できる",
+        "status": "PASS",
+        "durationMs": 234
+      },
+      {
+        "id": 22,
+        "name": "管理者の指標目標と導入前期間を手入力でき初期値へ戻せる",
+        "status": "PASS",
+        "durationMs": 218
+      },
+      {
+        "id": 23,
+        "name": "ログアウト後は同じ Cookie のセッションを無効化する",
+        "status": "PASS",
+        "durationMs": 331
+      }
+    ]
+  },
+  {
+    "startedAt": "2026-10-08T05:11:33.203Z",
+    "endedAt": "2026-10-08T05:11:41.267Z",
+    "timezone": "Asia/Tokyo",
+    "baseURL": "http://127.0.0.1:3001",
+    "isolation": "運用用 dev.db と別の SQLite test.db。架空デモデータを実際に変更。",
+    "passed": 23,
+    "failed": 0,
+    "results": [
+      {
+        "id": 1,
+        "name": "学生が科目と TA の対応科目・単元・空き枠を取得できる",
+        "status": "PASS",
+        "durationMs": 39
+      },
+      {
+        "id": 2,
+        "name": "完全一致 TA に予約し、サーバーがレベル 1 と確認済みを保存する",
+        "status": "PASS",
+        "durationMs": 206
+      },
+      {
+        "id": 3,
+        "name": "関連分野 TA はレベル 2・対応確認待ちとなり TA が承認できる",
+        "status": "PASS",
+        "durationMs": 230
+      },
+      {
+        "id": 4,
+        "name": "完全一致がなくても一般・教員相談を受け付け、未確認 TA の自動割当を防ぐ",
+        "status": "PASS",
+        "durationMs": 373
+      },
+      {
+        "id": 5,
+        "name": "科目と日時だけの簡単予約が永続化される",
+        "status": "PASS",
+        "durationMs": 30
+      },
+      {
+        "id": 6,
+        "name": "単元・具体的な質問を含む詳細予約を保存する",
+        "status": "PASS",
+        "durationMs": 148
+      },
+      {
+        "id": 7,
+        "name": "同一 TA・同一枠への同時予約は 1 件だけ成功する",
+        "status": "PASS",
+        "durationMs": 288
+      },
+      {
+        "id": 8,
+        "name": "当日予約通知が TA に即時保存され、確認状態を更新できる",
+        "status": "PASS",
+        "durationMs": 211
+      },
+      {
+        "id": 9,
+        "name": "学生が予約当日にチェックインし来室日時を保存する",
+        "status": "PASS",
+        "durationMs": 87
+      },
+      {
+        "id": 10,
+        "name": "担当 TA が準備・指導開始・カルテ・指導完了を保存する",
+        "status": "PASS",
+        "durationMs": 293
+      },
+      {
+        "id": 11,
+        "name": "他の学生・担当外 TA のカルテ直接閲覧と更新を拒否する",
+        "status": "PASS",
+        "durationMs": 1451
+      },
+      {
+        "id": 12,
+        "name": "指導完了後に学生が任意アンケートへ回答し保存する",
+        "status": "PASS",
+        "durationMs": 93
+      },
+      {
+        "id": 13,
+        "name": "管理者が予約・来室・指導品質・試行数を集計 CSV で確認する",
+        "status": "PASS",
+        "durationMs": 163
+      },
+      {
+        "id": 14,
+        "name": "ヒアリング原文・引用許可・未検証状態を保持する",
+        "status": "PASS",
+        "durationMs": 158
+      },
+      {
+        "id": 15,
+        "name": "デモと実測を区別し導入前未取得を保持する",
+        "status": "PASS",
+        "durationMs": 140
+      },
+      {
+        "id": 16,
+        "name": "未認証・偽セッション・CSRF 欠落・異なる Origin を拒否する",
+        "status": "PASS",
+        "durationMs": 150
+      },
+      {
+        "id": 17,
+        "name": "学生による管理設定・他人予約操作・CSV 出力を拒否する",
+        "status": "PASS",
+        "durationMs": 68
+      },
+      {
+        "id": 18,
+        "name": "未来のチェックイン・範囲外満足度・異なる科目の単元を拒否する",
+        "status": "PASS",
+        "durationMs": 155
+      },
+      {
+        "id": 19,
+        "name": "予約の質問変更とキャンセルを TA に通知し空き枠を戻す",
+        "status": "PASS",
+        "durationMs": 275
+      },
+      {
+        "id": 20,
+        "name": "教員の履歴権限を管理者が付与・撤回できる",
+        "status": "PASS",
+        "durationMs": 210
+      },
+      {
+        "id": 21,
+        "name": "飛び込みを担当未確認の一般相談として受付記録できる",
+        "status": "PASS",
+        "durationMs": 187
+      },
+      {
+        "id": 22,
+        "name": "管理者の指標目標と導入前期間を手入力でき初期値へ戻せる",
+        "status": "PASS",
+        "durationMs": 178
+      },
+      {
+        "id": 23,
+        "name": "ログアウト後は同じ Cookie のセッションを無効化する",
+        "status": "PASS",
+        "durationMs": 225
+      }
+    ]
+  },
+  {
+    "startedAt": "2026-10-08T05:12:31.358Z",
+    "endedAt": "2026-10-08T05:12:44.603Z",
+    "timezone": "Asia/Tokyo",
+    "baseURL": "http://127.0.0.1:3001",
+    "isolation": "運用用 dev.db と別の SQLite test.db。架空デモデータを実際に変更。",
+    "passed": 23,
+    "failed": 1,
+    "results": [
+      {
+        "id": 1,
+        "name": "学生が科目と TA の対応科目・単元・空き枠を取得できる",
+        "status": "PASS",
+        "durationMs": 78
+      },
+      {
+        "id": 2,
+        "name": "完全一致 TA に予約し、サーバーがレベル 1 と確認済みを保存する",
+        "status": "PASS",
+        "durationMs": 1209
+      },
+      {
+        "id": 3,
+        "name": "関連分野 TA はレベル 2・対応確認待ちとなり TA が承認できる",
+        "status": "PASS",
+        "durationMs": 487
+      },
+      {
+        "id": 4,
+        "name": "完全一致がなくても一般・教員相談を受け付け、未確認 TA の自動割当を防ぐ",
+        "status": "PASS",
+        "durationMs": 699
+      },
+      {
+        "id": 5,
+        "name": "科目と日時だけの簡単予約が永続化される",
+        "status": "PASS",
+        "durationMs": 97
+      },
+      {
+        "id": 6,
+        "name": "単元・具体的な質問を含む詳細予約を保存する",
+        "status": "PASS",
+        "durationMs": 483
+      },
+      {
+        "id": 7,
+        "name": "同一 TA・同一枠への同時予約は 1 件だけ成功する",
+        "status": "PASS",
+        "durationMs": 626
+      },
+      {
+        "id": 8,
+        "name": "当日予約通知が TA に即時保存され、確認状態を更新できる",
+        "status": "PASS",
+        "durationMs": 296
+      },
+      {
+        "id": 9,
+        "name": "学生が予約当日にチェックインし来室日時を保存する",
+        "status": "PASS",
+        "durationMs": 208
+      },
+      {
+        "id": 10,
+        "name": "担当 TA が準備・指導開始・カルテ・指導完了を保存する",
+        "status": "PASS",
+        "durationMs": 607
+      },
+      {
+        "id": 11,
+        "name": "他の学生・担当外 TA のカルテ直接閲覧と更新を拒否する",
+        "status": "PASS",
+        "durationMs": 1234
+      },
+      {
+        "id": 12,
+        "name": "指導完了後に学生が任意アンケートへ回答し保存する",
+        "status": "PASS",
+        "durationMs": 179
+      },
+      {
+        "id": 13,
+        "name": "管理者が予約・来室・指導品質・試行数を集計 CSV で確認する",
+        "status": "PASS",
+        "durationMs": 300
+      },
+      {
+        "id": 14,
+        "name": "ヒアリング原文・引用許可・未検証状態を保持する",
+        "status": "PASS",
+        "durationMs": 315
+      },
+      {
+        "id": 15,
+        "name": "デモと実測を区別し導入前未取得を保持する",
+        "status": "PASS",
+        "durationMs": 174
+      },
+      {
+        "id": 16,
+        "name": "未認証・偽セッション・CSRF 欠落・異なる Origin を拒否する",
+        "status": "PASS",
+        "durationMs": 224
+      },
+      {
+        "id": 17,
+        "name": "学生による管理設定・他人予約操作・CSV 出力を拒否する",
+        "status": "PASS",
+        "durationMs": 125
+      },
+      {
+        "id": 18,
+        "name": "未来のチェックイン・範囲外満足度・異なる科目の単元を拒否する",
+        "status": "PASS",
+        "durationMs": 374
+      },
+      {
+        "id": 19,
+        "name": "予約の質問変更とキャンセルを TA に通知し空き枠を戻す",
+        "status": "PASS",
+        "durationMs": 528
+      },
+      {
+        "id": 20,
+        "name": "教員の履歴権限を管理者が付与・撤回できる",
+        "status": "PASS",
+        "durationMs": 367
+      },
+      {
+        "id": 21,
+        "name": "飛び込みを担当未確認の一般相談として受付記録できる",
+        "status": "PASS",
+        "durationMs": 182
+      },
+      {
+        "id": 22,
+        "name": "管理者の指標目標と導入前期間を手入力でき初期値へ戻せる",
+        "status": "PASS",
+        "durationMs": 124
+      },
+      {
+        "id": 23,
+        "name": "ログアウト後は同じ Cookie のセッションを無効化する",
+        "status": "PASS",
+        "durationMs": 197
+      },
+      {
+        "id": 24,
+        "name": "偽装 Host と同一偽装 Origin を使ったアクセスを拒否する",
+        "status": "FAIL",
+        "durationMs": 58,
+        "reason": "HTTP 200\n\n200 !== 403\n"
+      }
+    ]
+  },
+  {
+    "startedAt": "2026-10-08T05:13:36.965Z",
+    "endedAt": "2026-10-08T05:13:43.020Z",
+    "timezone": "Asia/Tokyo",
+    "baseURL": "http://127.0.0.1:3001",
+    "isolation": "運用用 dev.db と別の SQLite test.db。架空デモデータを実際に変更。",
+    "passed": 24,
+    "failed": 0,
+    "results": [
+      {
+        "id": 1,
+        "name": "学生が科目と TA の対応科目・単元・空き枠を取得できる",
+        "status": "PASS",
+        "durationMs": 47
+      },
+      {
+        "id": 2,
+        "name": "完全一致 TA に予約し、サーバーがレベル 1 と確認済みを保存する",
+        "status": "PASS",
+        "durationMs": 167
+      },
+      {
+        "id": 3,
+        "name": "関連分野 TA はレベル 2・対応確認待ちとなり TA が承認できる",
+        "status": "PASS",
+        "durationMs": 257
+      },
+      {
+        "id": 4,
+        "name": "完全一致がなくても一般・教員相談を受け付け、未確認 TA の自動割当を防ぐ",
+        "status": "PASS",
+        "durationMs": 356
+      },
+      {
+        "id": 5,
+        "name": "科目と日時だけの簡単予約が永続化される",
+        "status": "PASS",
+        "durationMs": 56
+      },
+      {
+        "id": 6,
+        "name": "単元・具体的な質問を含む詳細予約を保存する",
+        "status": "PASS",
+        "durationMs": 209
+      },
+      {
+        "id": 7,
+        "name": "同一 TA・同一枠への同時予約は 1 件だけ成功する",
+        "status": "PASS",
+        "durationMs": 350
+      },
+      {
+        "id": 8,
+        "name": "当日予約通知が TA に即時保存され、確認状態を更新できる",
+        "status": "PASS",
+        "durationMs": 189
+      },
+      {
+        "id": 9,
+        "name": "学生が予約当日にチェックインし来室日時を保存する",
+        "status": "PASS",
+        "durationMs": 141
+      },
+      {
+        "id": 10,
+        "name": "担当 TA が準備・指導開始・カルテ・指導完了を保存する",
+        "status": "PASS",
+        "durationMs": 361
+      },
+      {
+        "id": 11,
+        "name": "他の学生・担当外 TA のカルテ直接閲覧と更新を拒否する",
+        "status": "PASS",
+        "durationMs": 166
+      },
+      {
+        "id": 12,
+        "name": "指導完了後に学生が任意アンケートへ回答し保存する",
+        "status": "PASS",
+        "durationMs": 74
+      },
+      {
+        "id": 13,
+        "name": "管理者が予約・来室・指導品質・試行数を集計 CSV で確認する",
+        "status": "PASS",
+        "durationMs": 102
+      },
+      {
+        "id": 14,
+        "name": "ヒアリング原文・引用許可・未検証状態を保持する",
+        "status": "PASS",
+        "durationMs": 139
+      },
+      {
+        "id": 15,
+        "name": "デモと実測を区別し導入前未取得を保持する",
+        "status": "PASS",
+        "durationMs": 96
+      },
+      {
+        "id": 16,
+        "name": "未認証・偽セッション・CSRF 欠落・異なる Origin を拒否する",
+        "status": "PASS",
+        "durationMs": 128
+      },
+      {
+        "id": 17,
+        "name": "学生による管理設定・他人予約操作・CSV 出力を拒否する",
+        "status": "PASS",
+        "durationMs": 111
+      },
+      {
+        "id": 18,
+        "name": "未来のチェックイン・範囲外満足度・異なる科目の単元を拒否する",
+        "status": "PASS",
+        "durationMs": 192
+      },
+      {
+        "id": 19,
+        "name": "予約の質問変更とキャンセルを TA に通知し空き枠を戻す",
+        "status": "PASS",
+        "durationMs": 289
+      },
+      {
+        "id": 20,
+        "name": "教員の履歴権限を管理者が付与・撤回できる",
+        "status": "PASS",
+        "durationMs": 294
+      },
+      {
+        "id": 21,
+        "name": "飛び込みを担当未確認の一般相談として受付記録できる",
+        "status": "PASS",
+        "durationMs": 263
+      },
+      {
+        "id": 22,
+        "name": "管理者の指標目標と導入前期間を手入力でき初期値へ戻せる",
+        "status": "PASS",
+        "durationMs": 162
+      },
+      {
+        "id": 23,
+        "name": "ログアウト後は同じ Cookie のセッションを無効化する",
+        "status": "PASS",
+        "durationMs": 199
+      },
+      {
+        "id": 24,
+        "name": "偽装 Host と同一偽装 Origin を使ったアクセスを拒否する",
+        "status": "PASS",
+        "durationMs": 47
+      }
+    ]
+  },
+  {
+    "startedAt": "2026-10-08T05:18:21.284Z",
+    "endedAt": "2026-10-08T05:18:29.521Z",
+    "timezone": "Asia/Tokyo",
+    "baseURL": "http://127.0.0.1:3001",
+    "isolation": "運用用 dev.db と別の SQLite test-final.db。架空デモデータを実際に変更。DB の隔離はサーバー起動時の DATABASE_URL 設定に依存。",
+    "passed": 24,
+    "failed": 0,
+    "results": [
+      {
+        "id": 1,
+        "name": "学生が科目と TA の対応科目・単元・空き枠を取得できる",
+        "status": "PASS",
+        "durationMs": 66
+      },
+      {
+        "id": 2,
+        "name": "完全一致 TA に予約し、サーバーがレベル 1 と確認済みを保存する",
+        "status": "PASS",
+        "durationMs": 281
+      },
+      {
+        "id": 3,
+        "name": "関連分野 TA はレベル 2・対応確認待ちとなり TA が承認できる",
+        "status": "PASS",
+        "durationMs": 244
+      },
+      {
+        "id": 4,
+        "name": "完全一致がなくても一般・教員相談を受け付け、未確認 TA の自動割当を防ぐ",
+        "status": "PASS",
+        "durationMs": 392
+      },
+      {
+        "id": 5,
+        "name": "科目と日時だけの簡単予約が永続化される",
+        "status": "PASS",
+        "durationMs": 55
+      },
+      {
+        "id": 6,
+        "name": "単元・具体的な質問を含む詳細予約を保存する",
+        "status": "PASS",
+        "durationMs": 308
+      },
+      {
+        "id": 7,
+        "name": "同一 TA・同一枠への同時予約は 1 件だけ成功する",
+        "status": "PASS",
+        "durationMs": 412
+      },
+      {
+        "id": 8,
+        "name": "当日予約通知が TA に即時保存され、確認状態を更新できる",
+        "status": "PASS",
+        "durationMs": 183
+      },
+      {
+        "id": 9,
+        "name": "学生が予約当日にチェックインし来室日時を保存する",
+        "status": "PASS",
+        "durationMs": 141
+      },
+      {
+        "id": 10,
+        "name": "担当 TA が準備・指導開始・カルテ・指導完了を保存する",
+        "status": "PASS",
+        "durationMs": 265
+      },
+      {
+        "id": 11,
+        "name": "他の学生・担当外 TA のカルテ直接閲覧と更新を拒否する",
+        "status": "PASS",
+        "durationMs": 1546
+      },
+      {
+        "id": 12,
+        "name": "指導完了後に学生が任意アンケートへ回答し保存する",
+        "status": "PASS",
+        "durationMs": 74
+      },
+      {
+        "id": 13,
+        "name": "管理者が予約・来室・指導品質・試行数を集計 CSV で確認する",
+        "status": "PASS",
+        "durationMs": 121
+      },
+      {
+        "id": 14,
+        "name": "ヒアリング原文・引用許可・未検証状態を保持する",
+        "status": "PASS",
+        "durationMs": 117
+      },
+      {
+        "id": 15,
+        "name": "デモと実測を区別し導入前未取得を保持する",
+        "status": "PASS",
+        "durationMs": 58
+      },
+      {
+        "id": 16,
+        "name": "未認証・偽セッション・CSRF 欠落・異なる Origin を拒否する",
+        "status": "PASS",
+        "durationMs": 100
+      },
+      {
+        "id": 17,
+        "name": "学生による管理設定・他人予約操作・CSV 出力を拒否する",
+        "status": "PASS",
+        "durationMs": 73
+      },
+      {
+        "id": 18,
+        "name": "未来のチェックイン・範囲外満足度・異なる科目の単元を拒否する",
+        "status": "PASS",
+        "durationMs": 219
+      },
+      {
+        "id": 19,
+        "name": "予約の質問変更とキャンセルを TA に通知し空き枠を戻す",
+        "status": "PASS",
+        "durationMs": 248
+      },
+      {
+        "id": 20,
+        "name": "教員の履歴権限を管理者が付与・撤回できる",
+        "status": "PASS",
+        "durationMs": 257
+      },
+      {
+        "id": 21,
+        "name": "飛び込みを担当未確認の一般相談として受付記録できる",
+        "status": "PASS",
+        "durationMs": 176
+      },
+      {
+        "id": 22,
+        "name": "管理者の指標目標と導入前期間を手入力でき初期値へ戻せる",
+        "status": "PASS",
+        "durationMs": 142
+      },
+      {
+        "id": 23,
+        "name": "ログアウト後は同じ Cookie のセッションを無効化する",
+        "status": "PASS",
+        "durationMs": 217
+      },
+      {
+        "id": 24,
+        "name": "偽装 Host と同一偽装 Origin を使ったアクセスを拒否する",
+        "status": "PASS",
+        "durationMs": 65
+      }
+    ]
+  },
+  {
+    "startedAt": "2026-10-08T05:20:23.321Z",
+    "endedAt": "2026-10-08T05:20:29.057Z",
+    "timezone": "Asia/Tokyo",
+    "baseURL": "http://127.0.0.1:3001",
+    "isolation": "運用用 dev.db と別の SQLite test-final.db。架空デモデータを実際に変更。DB の隔離はサーバー起動時の DATABASE_URL 設定に依存。",
+    "passed": 24,
+    "failed": 0,
+    "results": [
+      {
+        "id": 1,
+        "name": "学生が科目と TA の対応科目・単元・空き枠を取得できる",
+        "status": "PASS",
+        "durationMs": 45
+      },
+      {
+        "id": 2,
+        "name": "完全一致 TA に予約し、サーバーがレベル 1 と確認済みを保存する",
+        "status": "PASS",
+        "durationMs": 171
+      },
+      {
+        "id": 3,
+        "name": "関連分野 TA はレベル 2・対応確認待ちとなり TA が承認できる",
+        "status": "PASS",
+        "durationMs": 290
+      },
+      {
+        "id": 4,
+        "name": "完全一致がなくても一般・教員相談を受け付け、未確認 TA の自動割当を防ぐ",
+        "status": "PASS",
+        "durationMs": 445
+      },
+      {
+        "id": 5,
+        "name": "科目と日時だけの簡単予約が永続化される",
+        "status": "PASS",
+        "durationMs": 52
+      },
+      {
+        "id": 6,
+        "name": "単元・具体的な質問を含む詳細予約を保存する",
+        "status": "PASS",
+        "durationMs": 250
+      },
+      {
+        "id": 7,
+        "name": "同一 TA・同一枠への同時予約は 1 件だけ成功する",
+        "status": "PASS",
+        "durationMs": 279
+      },
+      {
+        "id": 8,
+        "name": "当日予約通知が TA に即時保存され、確認状態を更新できる",
+        "status": "PASS",
+        "durationMs": 126
+      },
+      {
+        "id": 9,
+        "name": "学生が予約当日にチェックインし来室日時を保存する",
+        "status": "PASS",
+        "durationMs": 89
+      },
+      {
+        "id": 10,
+        "name": "担当 TA が準備・指導開始・カルテ・指導完了を保存する",
+        "status": "PASS",
+        "durationMs": 315
+      },
+      {
+        "id": 11,
+        "name": "他の学生・担当外 TA のカルテ直接閲覧と更新を拒否する",
+        "status": "PASS",
+        "durationMs": 165
+      },
+      {
+        "id": 12,
+        "name": "指導完了後に学生が任意アンケートへ回答し保存する",
+        "status": "PASS",
+        "durationMs": 74
+      },
+      {
+        "id": 13,
+        "name": "管理者が予約・来室・指導品質・試行数を集計 CSV で確認する",
+        "status": "PASS",
+        "durationMs": 134
+      },
+      {
+        "id": 14,
+        "name": "ヒアリング原文・引用許可・未検証状態を保持する",
+        "status": "PASS",
+        "durationMs": 114
+      },
+      {
+        "id": 15,
+        "name": "デモと実測を区別し導入前未取得を保持する",
+        "status": "PASS",
+        "durationMs": 70
+      },
+      {
+        "id": 16,
+        "name": "未認証・偽セッション・CSRF 欠落・異なる Origin を拒否する",
+        "status": "PASS",
+        "durationMs": 99
+      },
+      {
+        "id": 17,
+        "name": "学生による管理設定・他人予約操作・CSV 出力を拒否する",
+        "status": "PASS",
+        "durationMs": 66
+      },
+      {
+        "id": 18,
+        "name": "未来のチェックイン・範囲外満足度・異なる科目の単元を拒否する",
+        "status": "PASS",
+        "durationMs": 212
+      },
+      {
+        "id": 19,
+        "name": "予約の質問変更とキャンセルを TA に通知し空き枠を戻す",
+        "status": "PASS",
+        "durationMs": 242
+      },
+      {
+        "id": 20,
+        "name": "教員の履歴権限を管理者が付与・撤回できる",
+        "status": "PASS",
+        "durationMs": 222
+      },
+      {
+        "id": 21,
+        "name": "飛び込みを担当未確認の一般相談として受付記録できる",
+        "status": "PASS",
+        "durationMs": 147
+      },
+      {
+        "id": 22,
+        "name": "管理者の指標目標と導入前期間を手入力でき初期値へ戻せる",
+        "status": "PASS",
+        "durationMs": 115
+      },
+      {
+        "id": 23,
+        "name": "ログアウト後は同じ Cookie のセッションを無効化する",
+        "status": "PASS",
+        "durationMs": 266
+      },
+      {
+        "id": 24,
+        "name": "偽装 Host と同一偽装 Origin を使ったアクセスを拒否する",
+        "status": "PASS",
+        "durationMs": 48
+      }
+    ]
+  }
+]
